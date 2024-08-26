@@ -1,0 +1,28 @@
+{% extends "global/base.html" %}
+
+{block formulario}
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>nome</th>
+            <th>idade</th>
+            <th>email</th>
+        </tr>
+
+        {% for pessoa in pessoas %}
+
+        <tr>
+            <th>{{pessoa.id_pessoa}}</th>
+            <th>{{pessoa.nome}}</th>
+            <th>{{pessoa.idade}}</th>
+            <th>{{pessoa.email}}</th>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+</div>
+
+
+{endblock}
