@@ -1,6 +1,6 @@
-{% extends "global/base.html" %}
+{% extends 'global/base.html' %}
 
-{block formulario}
+{% block formulario %}
 <div class="container">
     <table class="table table-striped">
         <tr>
@@ -8,6 +8,7 @@
             <th>nome</th>
             <th>idade</th>
             <th>email</th>
+            <th>Operações</th>
         </tr>
 
         {% for pessoa in pessoas %}
@@ -17,6 +18,10 @@
             <th>{{pessoa.nome}}</th>
             <th>{{pessoa.idade}}</th>
             <th>{{pessoa.email}}</th>
+            <td>
+                <a href="{% url 'editar' pessoa.id_pessoa %}">Editar</a>
+                <a href="{% url 'apagar' pessoa.id_pessoa %}">Excluir</a>
+            </td>
         </tr>
 
         {% endfor %}
@@ -25,4 +30,4 @@
 </div>
 
 
-{endblock}
+{% endblock %}
