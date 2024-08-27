@@ -21,7 +21,8 @@ def gravar(request):
     nova_pessoa.email = request.POST.get('email')
     nova_pessoa.save()
 
-    return contato(request)
+    return exibe(request)
+    
 
 
 def exibe(request):
@@ -36,3 +37,26 @@ def exibe(request):
         'contato/mostrar.html',
          exibe_pessoas,
     )
+
+def editar(request, id):
+        pessoa = Pessoa.objects.get(id_pessoa=id)
+        return render(
+            request,
+            'contato/editar.html',
+            {"pessoa": pessoa}
+        )
+
+
+def atualizar(request, id):
+        pessoa = Pessoa.objects.get(id_pessoa=id)
+        pessoa.nome = request.POST.get('nome')
+        pessoa.idade = request.POST.get('idade')
+        pessoa.email = request.POST.get('email')
+        pessoa.save()
+
+        return exibe(request)
+
+def apagar(request, id):
+        pessoa = Pessoa.objects.get(id_pessoa=id)
+        pessoa.delete()
+        return exibe(request)
